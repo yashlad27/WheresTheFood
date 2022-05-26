@@ -2,6 +2,7 @@ package com.example.wheresthefood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,8 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         DBHelper helper = new DBHelper(this);
+
+        // THIS IF SPECIFIES THE CASE WHEN IT'S INSERTION OF DATA
 
         if(getIntent().getIntExtra("type", 0) == 1) {
 
@@ -58,9 +61,14 @@ public class DetailActivity extends AppCompatActivity {
                         Toast.makeText(DetailActivity.this, "Data Successfully Inserted!", Toast.LENGTH_SHORT).show();
                     else
                         Toast.makeText(DetailActivity.this, "Some Error while Inserting :(", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(DetailActivity.this,MainActivity.class);
+                    startActivity(intent);
                 }
             });
-        } else {
+        }
+        // THIS ELSE SPECIFIES THE CASE WHEN IT'S UPDATION OF DATA
+            else {
             int id = getIntent().getIntExtra("id", 0);
             Cursor cursor = helper.getOrderById(id);
             int image = cursor.getInt(4);
@@ -92,6 +100,8 @@ public class DetailActivity extends AppCompatActivity {
                         Toast.makeText(DetailActivity.this, "Updated Successfully!", Toast.LENGTH_SHORT).show();
                     else
                         Toast.makeText(DetailActivity.this, "Failed to Update :(", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DetailActivity.this,OrderActivity.class);
+                    startActivity(intent);
                 }
             });
         }

@@ -41,6 +41,9 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder
         return new viewHolder(view);
     }
 
+
+    // THESE ARE THE MAPPINGS FOR SPECIFIC VIEWS FROM XML
+
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
@@ -49,6 +52,8 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder
         holder.soldItemName.setText(model.getSoldItemName());
         holder.orderNumber.setText(model.getOrderNumber());
         holder.price.setText(model.getPrice());
+
+        // WHEN A CARD ON ORDERS SCREEN IS TAPPED, UPDATE PAGE IS BROUGHT UP
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,9 +65,14 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder
             }
         });
 
+        // WHEN A CARD ON ORDERS SCREEN IS LONG TAPPED, DELETION IS PERFORMED
+
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+
+                // ALERT DIALOG FOR CONFIRMATION OF DELETION
+
                 new AlertDialog.Builder(context)
                         .setTitle("Delete Item")
                         .setMessage("Are you sure you want to remove this item?")
@@ -74,18 +84,21 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder
                                     Toast.makeText(context, "Deleted Order", Toast.LENGTH_SHORT).show();
                                 else
                                     Toast.makeText(context, "Error Deleting", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context,OrderActivity.class);
+                                context.startActivity(intent);
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
+                                Intent intent = new Intent(context,OrderActivity.class);
+                                context.startActivity(intent);
                             }
                         })
                         .show();
-//                Intent intent = new Intent(context, MainActivity.class);
+
                 return false;
-            }
+           }
         });
 
     }
@@ -94,6 +107,8 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.viewHolder
     public int getItemCount() {
         return list.size();
     }
+
+    // MAPPING THE VIEWHOLDER
 
     public static class viewHolder extends RecyclerView.ViewHolder {
 

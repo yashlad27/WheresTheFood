@@ -2,6 +2,8 @@ package com.example.wheresthefood.Models;
 
 public class MainModel {
 
+    // THIS MODEL CLASS CONTAINS JUST THE CONSTRUCTOR, GETTERS & SETTERS
+
     public MainModel(int image, String name, String price, String description) {
         this.image = image;
         this.name = name;

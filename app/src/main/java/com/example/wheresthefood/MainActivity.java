@@ -18,6 +18,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    // WE USE VIEW BINDING TO ELIMINATE THE HASSLE OF INITIALIZING VARIABLES
+    // AND CONNECTING THEM WITH THEIR CORRESPONDING XML ID VALUES
+
     ActivityMainBinding binding;
 
     @Override
@@ -36,8 +39,13 @@ public class MainActivity extends AppCompatActivity {
         list.add(new MainModel(R.drawable.dosa, "Mysore Masala Dosa", "150", "Mysore Masala Dosa with Coconut Chutney"));
         list.add(new MainModel(R.drawable.dosa, "Masala Dosa", "130", "Masala Dosa with Coconut Chutney"));
 
+        // ADAPTERS HELP PUSH DATA FROM A DATA SOURCE WITHIN VIEWS
+        // HERE, WE'RE USING CUSTOM ADAPTERS TO PUSH DATA WITHIN RECYCLERVIEW
+
         MainAdapter adapter = new MainAdapter(list, this);
         binding.recyclerview.setAdapter(adapter);
+
+        // HERE, WE GIVE OUR RECYCLERVIEW A CONTEXT ABOUT THE LAYOUT WE REQUIRE (LINEAR LAYOUT)
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.recyclerview.setLayoutManager(layoutManager);
@@ -49,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+
+    // WHEN AN ITEM FROM THE RECYCLERVIEW IS TAPPED, ORDERACTIVITY NEEDS TO START
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

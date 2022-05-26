@@ -7,9 +7,26 @@
     android:orientation="vertical"
     tools:context=".OrderActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Long Press On Item To Delete"
+        android:textAlignment="center" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="595dp"
         tools:listitem="@layout/order_sample" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/my_blue"
+        android:backgroundTint="@color/my_blue"
+        android:onClick="backHome"
+        android:text="HOME" />
 </LinearLayout>

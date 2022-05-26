@@ -2,6 +2,8 @@ package com.example.wheresthefood.Models;
 
 public class OrdersModel {
 
+    // THIS CLASS CONTAINS JUST THE CONSTRUCTOR, GETTERS & SETTERS
+
     int orderImage;
     String soldItemName, price, orderNumber;
 
